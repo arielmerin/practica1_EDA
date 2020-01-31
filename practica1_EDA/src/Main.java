@@ -1,7 +1,15 @@
 public class Main {
     public static void main(String[] args) {
-        ArregloDinamico<String> arregloDinamico = new ArregloDinamico<>();
-        arregloDinamico.agrega("Ariel");
+        ArregloDinamico<Integer> arregloDinamico = new ArregloDinamico<>();
+        arregloDinamico.busca(0);
+        //System.out.println(arregloDinamico);
+/**
+        ArregloDinamico<String> arregloDinamic = new ArregloDinamico<>(3);
+        arregloDinamic.agrega("Ari1");
+        arregloDinamic.agrega("Ari2");
+        arregloDinamic.agrega("Ari3");
+        //arregloDinamic.agrega("Ari4");
+
         /**
          * para usar eset tipo de iteradores
          * Iterator<T> it = ad.iterador();
@@ -13,5 +21,7 @@ public class Main {
          *  for(String s: aad)
          *  sout(s)
          */
+;
+        System.out.println(arregloDinamico.getArreglo());
     }
 }

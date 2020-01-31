@@ -4,10 +4,23 @@
  */
 import java.util.Iterator;
 
+
 public class ArregloDinamico<T> implements Iterable<T> {
 
     private T[] arreglo;
     private int elementos;
+
+    /**
+     * Inecesarios pero no sé qué hacer para obtener el arreglo
+     * @return
+     */
+    public T[] getArreglo() {
+        return arreglo;
+    }
+
+    public int getElementos() {
+        return elementos;
+    }
 
     /**
      * No importa el nombre que se le ponga a la clase, solo es para fines didácticos
@@ -57,8 +70,8 @@ public class ArregloDinamico<T> implements Iterable<T> {
         /**
          * Crear un arreglo de este tamaño
          */
-        arreglo = (T[]) new ArregloDinamico[0];
-        elementos = 0;
+        this.arreglo = (T[])new ArregloDinamico[1000];
+        this.elementos = 0;
     }
 
     /**
@@ -68,7 +81,6 @@ public class ArregloDinamico<T> implements Iterable<T> {
      * @param n
      */
     public ArregloDinamico(int n) {
-        arreglo = (T[]) new ArregloDinamico[n];
         elementos = 0;
         /**
          * Crear un arreglo de este tamaño
@@ -86,12 +98,18 @@ public class ArregloDinamico<T> implements Iterable<T> {
          * No debe de haber huecos en el arreglo
          * si se nos acaba el espacio hay que crecer el arreglo
          */
-        if (elementos == arreglo.length){
-            arreglo[elementos-1] = elem;
-        }else if (elementos < arreglo.length ){
-            ArregloDinamico<T> arreglito = new ArregloDinamico(4);
+        elementos++;
+        arreglo[0] = elem;
+       /** if (elementos < arreglo.length){
+            System.out.println("Entrando a caso 1, los elementos son menores que la dimensión del arreglo");
+            arreglo[1] = elem;
+
+        }/**else if (elementos == arreglo.length ){
+
+            System.out.println("Entrando a caso 2, los elementos son menores que la dimensión del arreglo");
+            ArregloDinamico<T> arreglito = new ArregloDinamico(arreglo.length +1);
             arreglito.arreglo[elementos] = elem;
-        }
+        }*/
     }
 
     /**
@@ -179,6 +197,7 @@ public class ArregloDinamico<T> implements Iterable<T> {
 
             for(T item: arreglo ){
                 String cadena = "[";
+                return (String)item;
 
             }
         }
