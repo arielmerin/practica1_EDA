@@ -9,28 +9,42 @@ public class ArregloDinamico<T> implements Iterable<T> {
     private T[] arreglo;
     private int elementos;
 
+    /**
+     * No importa el nombre que se le ponga a la clase, solo es para fines didácticos
+     * @param <T>
+     */
     private class Iterador<T> implements Iterator<T> {
-
+        /**
+         * Es una convención, poner siguiente, es el pivote que indicará donde buscar
+         */
         private int siguiente;
 
         public Iterador() {
-
+            this.siguiente = 0;
         }
 
         @Override
         public boolean hasNext() {
-            //Aquí va tu código
-            return false;
+            return elementos > siguiente;
         }
 
         @Override
         public T next() {
-            //Aquí va tu código
-            return null;
+            if (hasNext()) {
+                /**
+                 * Se supone que no de debería de hacer
+                 */
+                T aux = (T) arreglo[siguiente];
+                siguiente++;
+                return aux;
+            }else return null;
         }
 
         @Override
         public void remove() {
+            /**
+             * Nuncahay que implementar este método, no tiene sentido en la encapsulacion
+             */
             Iterator.super.remove();
         }
 
@@ -40,7 +54,9 @@ public class ArregloDinamico<T> implements Iterable<T> {
      * Constructor por omisión
      */
     public ArregloDinamico() {
-        //Aquí va tu código
+        /**
+         * Crear un arreglo de este tamaño
+         */
     }
 
     /**
@@ -50,7 +66,9 @@ public class ArregloDinamico<T> implements Iterable<T> {
      * @param n
      */
     public ArregloDinamico(int n) {
-        //Aquí va tu código
+        /**
+         * Crear un arreglo de este tamaño
+         */
     }
 
     /**
@@ -60,7 +78,11 @@ public class ArregloDinamico<T> implements Iterable<T> {
      * @param elem
      */
     public void agrega(T elem) {
-        //Aquí va tu código
+        /**
+         * No debe de haber huecos en el arreglo
+         * si se nos acaba el espacio hay que crecer el arreglo
+         */
+        if (elementos < 5);
     }
 
     /**
@@ -69,11 +91,14 @@ public class ArregloDinamico<T> implements Iterable<T> {
      * devolver null.
      *
      * @param n
-     * @return 
+     * @return
      */
     public T busca(int n) {
-        //Aquí va tu código
-        return null;
+        if (n < elementos){
+            return arreglo[n];
+        }else {
+            return null;
+        }
     }
 
     /**
@@ -85,7 +110,10 @@ public class ArregloDinamico<T> implements Iterable<T> {
      * @return
      */
     public T elimina(int n) {
-        //Aquí va tu código
+        /**
+         * Tenemos que borrar el primer elemento, luego de la posición donde se elimina hay que volver a pegar
+         * hay que recorrer los elementos
+         */
         return null;
     }
 
@@ -97,25 +125,28 @@ public class ArregloDinamico<T> implements Iterable<T> {
      * @return
      */
     public boolean contiene(T elem) {
-        //Aquí va tu código
+        /**
+         * == sirve para localidad de memoria y el .equals() para comparar
+         */
         return false;
     }
     /**
-     * 
+     *
      * @param <T>
-     * @param array 
+     * @param array
      */
     public static <T extends Comparable<T>> void quickSort(ArregloDinamico<T> array) {
         //Aquí va tu código
     }
+
     /**
-     * 
-     * @param <T>
+     * Se pone esta parte para que entienda que los cpmparables son de tipo T y así ahorrarnos el cast
+     * si en algún momento fuera necesario
      * @param a
      * @param ini
-     * @param fin 
+     * @param fin
+     * @param <T>
      */
-
     public static <T extends Comparable<T>> void quickSort(T[] a, int ini, int fin) {
         //Aquí va tu código
     }
@@ -132,7 +163,21 @@ public class ArregloDinamico<T> implements Iterable<T> {
      */
     @Override
     public String toString() {
-    	//Aquí va tu código
+        /**
+         * tiene que regresar esto
+         */
+        if (elementos > 0){
+
+            for(T item: arreglo ){
+                String cadena = "[";
+
+            }
+        }
         return null;
     }
 }
+
+/**
+ * usuario:     sarojasr
+ * contraseña:  du0N.Inc1
+ */
