@@ -57,6 +57,8 @@ public class ArregloDinamico<T> implements Iterable<T> {
         /**
          * Crear un arreglo de este tamaño
          */
+        arreglo = (T[]) new ArregloDinamico[0];
+        elementos = 0;
     }
 
     /**
@@ -66,6 +68,8 @@ public class ArregloDinamico<T> implements Iterable<T> {
      * @param n
      */
     public ArregloDinamico(int n) {
+        arreglo = (T[]) new ArregloDinamico[n];
+        elementos = 0;
         /**
          * Crear un arreglo de este tamaño
          */
@@ -82,7 +86,12 @@ public class ArregloDinamico<T> implements Iterable<T> {
          * No debe de haber huecos en el arreglo
          * si se nos acaba el espacio hay que crecer el arreglo
          */
-        if (elementos < 5);
+        if (elementos == arreglo.length){
+            arreglo[elementos-1] = elem;
+        }else if (elementos < arreglo.length ){
+            ArregloDinamico<T> arreglito = new ArregloDinamico(4);
+            arreglito.arreglo[elementos] = elem;
+        }
     }
 
     /**
