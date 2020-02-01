@@ -2,6 +2,8 @@
  *
  * @author Luis Manuel Martínez Dámaso
  */
+import org.omg.CORBA.Object;
+
 import java.util.Iterator;
 
 
@@ -70,8 +72,7 @@ public class ArregloDinamico<T> implements Iterable<T> {
         /**
          * Crear un arreglo de este tamaño
          */
-        this.arreglo = (T[])new ArregloDinamico[1000];
-        this.elementos = 0;
+        this(20);
     }
 
     /**
@@ -81,6 +82,7 @@ public class ArregloDinamico<T> implements Iterable<T> {
      * @param n
      */
     public ArregloDinamico(int n) {
+        arreglo = (T[])new Object[n];
         elementos = 0;
         /**
          * Crear un arreglo de este tamaño
