@@ -210,4 +210,6 @@ public class ArregloDinamico<T> implements Iterable<T> {
 /**
  * usuario:     sarojasr
  * contraseña:  du0N.Inc1
+ * ok pues las instrucciones fueron que pusiera mi arreglo de tipo object y que luego en el método to string hiciera un for nomal, lo vamos a intentar a ver qué pasa
+	*
  */
