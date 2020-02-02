@@ -1,7 +1,14 @@
 public class Main {
     public static void main(String[] args) {
-        ArregloDinamico<Integer> arregloDinamico = new ArregloDinamico<>();
-        arregloDinamico.busca(0);
+        ArregloDinamico<String> arregloDinamico = new ArregloDinamico<>();
+        arregloDinamico.agrega("Arielin");
+        arregloDinamico.agrega("Arielin2");
+        arregloDinamico.agrega("Arielin3");
+        arregloDinamico.agrega("Arielin4");
+        arregloDinamico.agrega("Arielin5");
+
+
+
         //System.out.println(arregloDinamico);
 /**
         ArregloDinamico<String> arregloDinamic = new ArregloDinamico<>(3);
@@ -22,6 +29,6 @@ public class Main {
          *  sout(s)
          */
 ;
-        System.out.println(arregloDinamico.getArreglo());
+        System.out.println(arregloDinamico);
     }
 }

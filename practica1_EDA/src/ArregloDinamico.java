@@ -2,7 +2,7 @@
  *
  * @author Luis Manuel Martínez Dámaso
  */
-import org.omg.CORBA.Object;
+//import org.omg.CORBA.Object;
 
 import java.util.Iterator;
 
@@ -52,7 +52,9 @@ public class ArregloDinamico<T> implements Iterable<T> {
                 T aux = (T) arreglo[siguiente];
                 siguiente++;
                 return aux;
-            }else return null;
+            }else {
+                return null;
+            }
         }
 
         @Override
@@ -100,8 +102,10 @@ public class ArregloDinamico<T> implements Iterable<T> {
          * No debe de haber huecos en el arreglo
          * si se nos acaba el espacio hay que crecer el arreglo
          */
+        this.arreglo[elementos] = elem;
         elementos++;
-        arreglo[0] = elem;
+        System.out.println("Este fue el elemento agregadado?"+ elem);
+        System.out.println("Así quedo el contador de elementos"+ elementos);
        /** if (elementos < arreglo.length){
             System.out.println("Entrando a caso 1, los elementos son menores que la dimensión del arreglo");
             arreglo[1] = elem;
@@ -195,15 +199,16 @@ public class ArregloDinamico<T> implements Iterable<T> {
         /**
          * tiene que regresar esto
          */
-        if (elementos > 0){
+        StringBuilder std = new StringBuilder();
+        Iterador it = new Iterador();
+        while (it.hasNext()){
 
-            for(T item: arreglo ){
-                String cadena = "[";
-                return (String)item;
+            std.append(it.next() + ", ");
 
-            }
         }
-        return null;
+        String result = std.substring(0,std.length() - 2);
+
+        return "[" + result + "]";
     }
 }
 
