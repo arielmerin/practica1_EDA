@@ -1,10 +1,11 @@
+
 public class Main {
     public static void main(String[] args) {
-        ArregloDinamico<String> arregloDinamico = new ArregloDinamico<>();
-        arregloDinamico.agrega("Arielin2");
-        arregloDinamico.agrega("Arielin3");
-        arregloDinamico.agrega("Arielin4");
-        arregloDinamico.agrega("Arielin5");
+        ArregloDinamico<Integer> arregloDinamico = new ArregloDinamico<>();
+        arregloDinamico.agrega(541);
+        arregloDinamico.agrega(948);
+        arregloDinamico.agrega(84);
+        arregloDinamico.agrega(2);
 
 
 
@@ -28,12 +29,11 @@ public class Main {
          *  sout(s)
          */
         System.out.println(arregloDinamico);
-
+/**
         if (arregloDinamico.contiene("Arielin3")){
             System.out.println("Sí lo encontró");
-        }
-        System.out.println(arregloDinamico.elimina(2));
-        System.out.println(arregloDinamico.elimina(1));
-        System.out.println(arregloDinamico);
+        }*/
+        ;
+
     }
 }

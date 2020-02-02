@@ -12,6 +12,13 @@ public class ArregloDinamico<T> implements Iterable<T> {
     private T[] arreglo;
     private int elementos;
 
+    public T[] getArreglo() {
+        return arreglo;
+    }
+
+    public int getElementos() {
+        return elementos;
+    }
 
     /**
      * No importa el nombre que se le ponga a la clase, solo es para fines didácticos
@@ -145,6 +152,7 @@ public class ArregloDinamico<T> implements Iterable<T> {
             aux[i-1] = arreglo[i];
         }
         arreglo = aux;
+        elementos--;
 
 
         return result;
@@ -173,20 +181,37 @@ public class ArregloDinamico<T> implements Iterable<T> {
      * @param <T>
      * @param array
      */
+    /**
     public static <T extends Comparable<T>> void quickSort(ArregloDinamico<T> array) {
         //Aquí va tu código
-    }
+    }*/
 
     /**
      * Se pone esta parte para que entienda que los cpmparables son de tipo T y así ahorrarnos el cast
      * si en algún momento fuera necesario
      * @param a
      * @param ini
-     * @param fin
+     * @param fin   
      * @param <T>
      */
     public static <T extends Comparable<T>> void quickSort(T[] a, int ini, int fin) {
-        //Aquí va tu código
+        T pivote =  a[ini];
+        int i = ini +1;
+        int j = fin;
+
+        while (i < j){
+            if ((Integer)pivote < (Integer) a[i]){
+                i++;
+            }else if ((Integer)pivote > (Integer) a[i] ){
+                j--;
+            } else {
+                T aux = a[i];
+                a[i] = a[j];
+                a[i] = aux;
+            }
+        }
+        a[ini] = a[i-1];
+        a[i -1] = pivote;
     }
 
     @Override
