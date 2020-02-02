@@ -1,7 +1,6 @@
 public class Main {
     public static void main(String[] args) {
         ArregloDinamico<String> arregloDinamico = new ArregloDinamico<>();
-        arregloDinamico.agrega("Arielin");
         arregloDinamico.agrega("Arielin2");
         arregloDinamico.agrega("Arielin3");
         arregloDinamico.agrega("Arielin4");
@@ -28,7 +27,13 @@ public class Main {
          *  for(String s: aad)
          *  sout(s)
          */
-;
+        System.out.println(arregloDinamico);
+
+        if (arregloDinamico.contiene("Arielin3")){
+            System.out.println("Sí lo encontró");
+        }
+        System.out.println(arregloDinamico.elimina(2));
+        System.out.println(arregloDinamico.elimina(1));
         System.out.println(arregloDinamico);
     }
 }

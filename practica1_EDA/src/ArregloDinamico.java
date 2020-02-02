@@ -12,17 +12,6 @@ public class ArregloDinamico<T> implements Iterable<T> {
     private T[] arreglo;
     private int elementos;
 
-    /**
-     * Inecesarios pero no sé qué hacer para obtener el arreglo
-     * @return
-     */
-    public T[] getArreglo() {
-        return arreglo;
-    }
-
-    public int getElementos() {
-        return elementos;
-    }
 
     /**
      * No importa el nombre que se le ponga a la clase, solo es para fines didácticos
@@ -127,7 +116,7 @@ public class ArregloDinamico<T> implements Iterable<T> {
      * @return
      */
     public T busca(int n) {
-        if (n < elementos){
+        if (n < elementos && arreglo[n] != null){
             return arreglo[n];
         }else {
             return null;
@@ -147,7 +136,18 @@ public class ArregloDinamico<T> implements Iterable<T> {
          * Tenemos que borrar el primer elemento, luego de la posición donde se elimina hay que volver a pegar
          * hay que recorrer los elementos
          */
-        return null;
+        T result = arreglo[n];
+        T[] aux = (T[])new Object[elementos];
+        for (int i = 0; i < n; i++){
+            aux[i] = arreglo[i];
+        }
+        for (int i = n +1; i < elementos; i++){
+            aux[i-1] = arreglo[i];
+        }
+        arreglo = aux;
+
+
+        return result;
     }
 
     /**
@@ -161,6 +161,11 @@ public class ArregloDinamico<T> implements Iterable<T> {
         /**
          * == sirve para localidad de memoria y el .equals() para comparar
          */
+        for (int i = 0; i < elementos; i++){
+            if (busca(i).equals(elem)){
+                return true;
+            }
+        }
         return false;
     }
     /**
@@ -206,8 +211,10 @@ public class ArregloDinamico<T> implements Iterable<T> {
             std.append(it.next() + ", ");
 
         }
-        String result = std.substring(0,std.length() - 2);
-
+        String result = "";
+        if (std.length() > 1){
+            result = std.substring(0,std.length() - 2);
+        }
         return "[" + result + "]";
     }
 }
