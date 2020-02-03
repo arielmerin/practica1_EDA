@@ -70,7 +70,7 @@ public class ArregloDinamico<T> implements Iterable<T> {
         /**
          * Crear un arreglo de este tamaño
          */
-        this(20);
+        this(2);
     }
 
     /**
@@ -98,10 +98,21 @@ public class ArregloDinamico<T> implements Iterable<T> {
          * No debe de haber huecos en el arreglo
          * si se nos acaba el espacio hay que crecer el arreglo
          */
+        System.out.println("Esta es la longitud de arreglo antes de la condicinal: " + arreglo.length);
+
+        if (elementos == arreglo.length-1){
+            System.out.println("Aqui entro a la condicional de que los elementos es igual a la longitud del arreglo");
+            T[] a = (T[])new Object[elementos+2];
+            for (int i = 0; i < arreglo.length ; i++) {
+                a[i] = arreglo[i];
+            }
+            this.arreglo = a;
+        }
+        System.out.println("Esta es la longitud de arreglo despues de la condicinal: " + arreglo.length);
         this.arreglo[elementos] = elem;
         elementos++;
-        System.out.println("Este fue el elemento agregadado?"+ elem);
-        System.out.println("Así quedo el contador de elementos"+ elementos);
+        System.out.println("Este fue el elemento agregadado? "+ elem);
+        System.out.println("Así quedo el contador de elementos "+ elementos);
        /** if (elementos < arreglo.length){
             System.out.println("Entrando a caso 1, los elementos son menores que la dimensión del arreglo");
             arreglo[1] = elem;
@@ -191,16 +202,17 @@ public class ArregloDinamico<T> implements Iterable<T> {
      * si en algún momento fuera necesario
      * @param a
      * @param ini
-     * @param fin   
+     * @param fin
      * @param <T>
      */
+    /**
     public static <T extends Comparable<T>> void quickSort(T[] a, int ini, int fin) {
-        T pivote =  a[ini];
+        int pivote =  (int)a[ini];
         int i = ini +1;
         int j = fin;
 
         while (i < j){
-            if ((Integer)pivote < (Integer) a[i]){
+            if (pivote < (int) a[i]){
                 i++;
             }else if ((Integer)pivote > (Integer) a[i] ){
                 j--;
@@ -212,7 +224,7 @@ public class ArregloDinamico<T> implements Iterable<T> {
         }
         a[ini] = a[i-1];
         a[i -1] = pivote;
-    }
+    }*/
 
     @Override
     public java.util.Iterator<T> iterator() {
