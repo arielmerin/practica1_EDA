@@ -1,4 +1,3 @@
-
 public class Main {
     public static void main(String[] args) {
         ArregloDinamico<Integer> arregloDinamico = new ArregloDinamico<>();
@@ -7,6 +6,10 @@ public class Main {
         arregloDinamico.agrega(84);
         arregloDinamico.agrega(2);
 
+        String[] aux = {"r","a","h","e","k"};
+        for (String s:aux){
+            System.out.println(s);
+        }
 
 
         //System.out.println(arregloDinamico);
@@ -16,24 +19,20 @@ public class Main {
         arregloDinamic.agrega("Ari2");
         arregloDinamic.agrega("Ari3");
         //arregloDinamic.agrega("Ari4");
-
-        /**
-         * para usar eset tipo de iteradores
-         * Iterator<T> it = ad.iterador();
-         *  while(it.hasNext(){
-         *      sout(t.next)
-         *
-         *
-         *  Ahora para hacer que se imprima todo tenemos que hacer
-         *  for(String s: aad)
-         *  sout(s)
-         */
+ */
         System.out.println(arregloDinamico);
+        ArregloDinamico.quickSort(aux,0,4);
+        for (String s:aux) {
+            System.out.println(s);
+        }
+
+        System.out.println(arregloDinamico);
+
 /**
         if (arregloDinamico.contiene("Arielin3")){
             System.out.println("Sí lo encontró");
         }*/
-        ;
+
 
     }
 }
