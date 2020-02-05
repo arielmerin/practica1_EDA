@@ -2,23 +2,13 @@
  *
  * @author Luis Manuel Martínez Dámaso
  */
-//import org.omg.CORBA.Object;
 
 import java.util.Iterator;
-
 
 public class ArregloDinamico<T> implements Iterable<T> {
 
     private T[] arreglo;
     private int elementos;
-
-    public T[] getArreglo() {
-        return arreglo;
-    }
-
-    public int getElementos() {
-        return elementos;
-    }
 
     /**
      * No importa el nombre que se le ponga a la clase, solo es para fines didácticos
@@ -26,10 +16,6 @@ public class ArregloDinamico<T> implements Iterable<T> {
      */
     private class Iterador<T> implements Iterator<T> {
 
-        /**
-         * Es una convención, poner siguiente, es el pivote que indicará donde buscar
-         * Permitira saber donde estamos iterando
-         */
         private int siguiente;
 
         public Iterador() {
@@ -59,7 +45,6 @@ public class ArregloDinamico<T> implements Iterable<T> {
              */
             Iterator.super.remove();
         }
-
     }
 
     /**
@@ -69,7 +54,7 @@ public class ArregloDinamico<T> implements Iterable<T> {
         /**
          * Crear un arreglo de este tamaño
          */
-        this(2);
+        this(1);
     }
 
     /**
@@ -79,7 +64,7 @@ public class ArregloDinamico<T> implements Iterable<T> {
      * @param n
      */
     public ArregloDinamico(int n) {
-        arreglo = (T[])new Object[n];
+        this.arreglo = (T[])new Object[n];
         elementos = 0;
         /**
          * Crear un arreglo de este tamaño
@@ -93,10 +78,6 @@ public class ArregloDinamico<T> implements Iterable<T> {
      * @param elem
      */
     public void agrega(T elem) {
-        /**
-         * No debe de haber huecos en el arreglo
-         * si se nos acaba el espacio hay que crecer el arreglo
-         */
         if (elementos == arreglo.length-1){
             T[] a = (T[])new Object[elementos+2];
             for (int i = 0; i < arreglo.length ; i++) {
@@ -133,10 +114,6 @@ public class ArregloDinamico<T> implements Iterable<T> {
      * @return
      */
     public T elimina(int n) {
-        /**
-         * Tenemos que borrar el primer elemento, luego de la posición donde se elimina hay que volver a pegar
-         * hay que recorrer los elementos
-         */
         T result = arreglo[n];
         T[] aux = (T[])new Object[elementos];
         for (int i = 0; i < n; i++){
@@ -147,8 +124,6 @@ public class ArregloDinamico<T> implements Iterable<T> {
         }
         arreglo = aux;
         elementos--;
-
-
         return result;
     }
 
@@ -160,9 +135,6 @@ public class ArregloDinamico<T> implements Iterable<T> {
      * @return
      */
     public boolean contiene(T elem) {
-        /**
-         * == sirve para localidad de memoria y el .equals() para comparar
-         */
         for (int i = 0; i < elementos; i++){
             if (busca(i).equals(elem)){
                 return true;
@@ -173,42 +145,37 @@ public class ArregloDinamico<T> implements Iterable<T> {
     /**
      *
      * @param <T>
-     * @param array
+     * @param array Arreglo sobre el cual se efectuara el algoritmo de ordenamiento.
      */
-
     public static <T extends Comparable<T>> void quickSort(ArregloDinamico<T> array) {
-        quickSort(array.arreglo, 0, array.elementos);
+        quickSort(array.arreglo, 0, array.elementos-1);
     }
 
-    /**
-     * Se pone esta parte para que entienda que los cpmparables son de tipo T y así ahorrarnos el cast
-     * si en algún momento fuera necesario
-     * @param a
-     * @param ini
-     * @param fin
-     * @param <T>
-     */
+    public static <T extends  Comparable<T>> void quickSort( T[] arreglo, int izq, int der){
+        T pivote = arreglo[izq]; // tomamos primer elemento como pivote
+        int i=izq; // i realiza la búsqueda de izquierda a derecha
+        int j=der; // j realiza la búsqueda de derecha a izquierda
+        T aux;
 
-    public static <T extends Comparable<T>> void quickSort(T[] a, int ini, int fin) {
-        T pivote =  a[ini];
-        int i = ini +1;
-        int j = fin;
-
-        while (i < j){
-            if (a[i].compareTo(pivote) > 0){
-                i++;
-            }else if (pivote.compareTo(a[i]) > 0 ){
-                j--;
-            } else {
-                T aux = a[i];
-                a[i] = a[j];
-                a[i] = aux;
+        while(i<j){
+            while( pivote.compareTo(arreglo[i]) >= 0 && i<j) i++; // busca elemento mayor que pivote
+            while(arreglo[j].compareTo(pivote) > 0) j--;         // busca elemento menor que pivote
+            if (i<j) {                      // si no se han cruzado
+                aux= arreglo[i];                  // los intercambia
+                arreglo[i]=arreglo[j];
+                arreglo[j]=aux;
             }
         }
-        a[ini] = a[i-1];
-        a[i -1] = pivote;
-        
+        arreglo[izq]=arreglo[j]; // se coloca el pivote en su lugar de forma que tendremos
+        arreglo[j]=pivote; // los menores a su izquierda y los mayores a su derecha
+        if(izq<j-1){
+            quickSort(arreglo,izq,j-1); // ordenamos subarray izquierdo
+        }
+        if(j+1 <der){
+            quickSort(arreglo,j+1,der); // ordenamos subarray derecho
+        }
     }
+
 
     @Override
     public java.util.Iterator<T> iterator() {
@@ -222,9 +189,6 @@ public class ArregloDinamico<T> implements Iterable<T> {
      */
     @Override
     public String toString() {
-        /**
-         * tiene que regresar esto
-         */
         StringBuilder std = new StringBuilder();
         Iterador it = new Iterador();
         while (it.hasNext()){
@@ -238,10 +202,3 @@ public class ArregloDinamico<T> implements Iterable<T> {
     }
 }
 
-/**
- * usuario:     sarojasr
- * contraseña:  du0N.Inc1
- * ok pues las instrucciones fueron que pusiera mi arreglo de tipo object y que luego en el método to string hiciera un for nomal, lo vamos a intentar a ver qué pasa
- *
- *
- */

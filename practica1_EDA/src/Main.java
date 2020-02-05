@@ -6,33 +6,19 @@ public class Main {
         arregloDinamico.agrega(84);
         arregloDinamico.agrega(2);
 
-        String[] aux = {"r","a","h","e","k"};
-        for (String s:aux){
-            System.out.println(s);
-        }
-
-
-        //System.out.println(arregloDinamico);
-/**
-        ArregloDinamico<String> arregloDinamic = new ArregloDinamico<>(3);
-        arregloDinamic.agrega("Ari1");
-        arregloDinamic.agrega("Ari2");
-        arregloDinamic.agrega("Ari3");
-        //arregloDinamic.agrega("Ari4");
- */
-        System.out.println(arregloDinamico);
-        ArregloDinamico.quickSort(aux,0,4);
-        for (String s:aux) {
+        Integer[] aux = {54,484,784,5,2,4844,45,59,999,948,99999,3,2,2};
+        for (Integer s:aux){
             System.out.println(s);
         }
 
         System.out.println(arregloDinamico);
+        arregloDinamico.quickSort(aux,0,aux.length-1);
+        for (Integer s:aux) {
+            System.out.println(s);
+        }
+        System.out.println(arregloDinamico.getClass().getSimpleName());
 
-/**
-        if (arregloDinamico.contiene("Arielin3")){
-            System.out.println("Sí lo encontró");
-        }*/
-
-
+        System.out.println(arregloDinamico);
+        
     }
 }
