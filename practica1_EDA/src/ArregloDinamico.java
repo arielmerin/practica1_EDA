@@ -1,6 +1,7 @@
 /**
  *
  * @author Luis Manuel Martínez Dámaso
+ * @version 1.2
  */
 
 import java.util.Iterator;
@@ -144,7 +145,7 @@ public class ArregloDinamico<T> implements Iterable<T> {
     }
     /**
      *
-     * @param <T>
+     * @param <T> Tipo del cual se encargara de ordenar nuestro metodo
      * @param array Arreglo sobre el cual se efectuara el algoritmo de ordenamiento.
      */
     public static <T extends Comparable<T>> void quickSort(ArregloDinamico<T> array) {
@@ -152,30 +153,29 @@ public class ArregloDinamico<T> implements Iterable<T> {
     }
 
     public static <T extends  Comparable<T>> void quickSort( T[] arreglo, int izq, int der){
-        T pivote = arreglo[izq]; // tomamos primer elemento como pivote
-        int i=izq; // i realiza la búsqueda de izquierda a derecha
-        int j=der; // j realiza la búsqueda de derecha a izquierda
+        T pivote = arreglo[izq];
+        int i=izq;
+        int j=der;
         T aux;
 
         while(i<j){
-            while( pivote.compareTo(arreglo[i]) >= 0 && i<j) i++; // busca elemento mayor que pivote
-            while(arreglo[j].compareTo(pivote) > 0) j--;         // busca elemento menor que pivote
-            if (i<j) {                      // si no se han cruzado
-                aux= arreglo[i];                  // los intercambia
+            while( pivote.compareTo(arreglo[i]) >= 0 && i<j) i++;
+            while(arreglo[j].compareTo(pivote) > 0) j--;
+            if (i<j) {
+                aux= arreglo[i];
                 arreglo[i]=arreglo[j];
                 arreglo[j]=aux;
             }
         }
-        arreglo[izq]=arreglo[j]; // se coloca el pivote en su lugar de forma que tendremos
-        arreglo[j]=pivote; // los menores a su izquierda y los mayores a su derecha
+        arreglo[izq]=arreglo[j];
+        arreglo[j]=pivote;
         if(izq<j-1){
-            quickSort(arreglo,izq,j-1); // ordenamos subarray izquierdo
+            quickSort(arreglo,izq,j-1);
         }
         if(j+1 <der){
-            quickSort(arreglo,j+1,der); // ordenamos subarray derecho
+            quickSort(arreglo,j+1,der);
         }
     }
-
 
     public static <T extends Comparable<T>>  void selectionSort(T[] arreglo){
         for (int i = 1; i < arreglo.length ; i++) {
