@@ -177,6 +177,18 @@ public class ArregloDinamico<T> implements Iterable<T> {
     }
 
 
+    public static <T extends Comparable<T>>  void selectionSort(T[] arreglo){
+        for (int i = 1; i < arreglo.length ; i++) {
+            T elem = arreglo[i];
+            int j = i-1;
+            while (j>=0 && arreglo[j].compareTo(elem) > 0){
+                arreglo[j+1] = arreglo[j];
+                j--;
+            }
+            arreglo[j+1] = elem;
+        }
+    }
+
     @Override
     public java.util.Iterator<T> iterator() {
         return new Iterador();

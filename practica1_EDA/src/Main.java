@@ -12,13 +12,12 @@ public class Main {
         }
 
         System.out.println(arregloDinamico);
-        arregloDinamico.quickSort(aux,0,aux.length-1);
+        arregloDinamico.selectionSort(aux);
         for (Integer s:aux) {
             System.out.println(s);
         }
-        System.out.println(arregloDinamico.getClass().getSimpleName());
 
         System.out.println(arregloDinamico);
-        
+
     }
 }
